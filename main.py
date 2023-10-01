@@ -167,7 +167,7 @@ async def play(interaction: Interaction, aleatoire:bool = False, terme: str = No
                 while threadDownload.is_alive():
                     await asyncio.sleep(1)
             except (KeyError, exceptions.AgeRestrictedError) as e:
-                await interaction.user.voice.channel.send("lecture impossible dû à une restriction d'âge")
+                await interaction.user.voice.channel.send(f"{url}: lecture impossible dû à une restriction d'âge")
             if voice_client.is_connected():
                 buffer.seek(0)
                 voice_client.play(source=discord.FFmpegPCMAudio(source=buffer, pipe=True), after=after)
