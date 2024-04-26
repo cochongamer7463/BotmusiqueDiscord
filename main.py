@@ -237,13 +237,10 @@ async def play(interaction: Interaction, aleatoire: bool = False, terme: str = N
                     except (KeyError, exceptions.AgeRestrictedError) as e:
                         await interaction.user.voice.channel.send(
                             f"{url_after[0]}: lecture impossible dû à une restriction d'âge")
-            bufferBefore.seek(0)
-            bufferBefore.truncate(0)
-            bufferBefore.write(bufferAfter.getvalue())
+            bufferBefore = bufferAfter
             url_before[0] = url_after[0]
             rowid_before[0] = rowid_after[0]
-            bufferAfter.seek(0)
-            bufferAfter.truncate(0)
+            bufferAfter = io.BytesIO()
 
             if await check_num_database() > 0:
                 if aleatoire:
