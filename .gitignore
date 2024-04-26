@@ -1,3 +1,7 @@
-/music_queue.db
-/ffmpeg.exe
-/discord.key
+music_queue.db
+ffmpeg.exe
+discord.key
+*.bat
+
+venv
+.idea
